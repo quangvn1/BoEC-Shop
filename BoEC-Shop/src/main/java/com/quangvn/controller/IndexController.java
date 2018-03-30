@@ -5,7 +5,11 @@
  */
 package com.quangvn.controller;
 
+import com.quangvn.models.Product;
+import com.quangvn.service.ProductService;
+import java.util.List;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -17,7 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index() {
+    public String index(Model model) {
+        List<Product> listHot = ProductService.getProductByKeyStatus("hot");
+        model.addAttribute("listHot", listHot);
         return "index";
     }
+
 }

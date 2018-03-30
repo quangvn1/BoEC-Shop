@@ -1,1 +1,8 @@
+com\quangvn\dao\ProductDao.class
+com\quangvn\factory\ProductFactory.class
+com\quangvn\builder\ProductBuilder.class
 com\quangvn\controller\IndexController.class
+com\quangvn\builder\ProductBuilder$ProductKeyStatusBuilder.class
+com\quangvn\dao\BaseDao.class
+com\quangvn\models\Product.class
+com\quangvn\controller\ProductController.class
