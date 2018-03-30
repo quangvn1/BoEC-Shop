@@ -8,6 +8,7 @@ package com.quangvn.dao;
 import static com.quangvn.dao.BaseDao.getConnect;
 import com.quangvn.factory.ProductFactory;
 import com.quangvn.models.Product;
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +29,7 @@ public class ProductDao extends BaseDao {
     }
 
     private static class ProductDaoHolder {
+
         private static final ProductDao INSTANCE = new ProductDao();
     }
 
@@ -35,10 +37,9 @@ public class ProductDao extends BaseDao {
         List<Product> list = new ArrayList<>();
         Connection conn = getConnect();
         try {
-            String sql = "SELECT * FROM smartshop.product WHERE KEY_STATUS = ?";
-            PreparedStatement pst = conn.prepareStatement(sql);
-            pst.setString(1, keyStatus);
-            ResultSet rs = pst.executeQuery();
+            CallableStatement stmt = conn.prepareCall("CALL smartshop.getProductByKeyStatus(?)");
+            stmt.setString(1, keyStatus);
+            ResultSet rs = stmt.executeQuery();
             Product entity = null;
             while (rs.next()) {
                 entity = ProductFactory.createProduct(rs);
