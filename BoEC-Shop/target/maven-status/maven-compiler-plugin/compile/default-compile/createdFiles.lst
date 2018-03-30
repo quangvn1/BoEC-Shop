@@ -1,8 +1,13 @@
+com\quangvn\dao\ProductDao$1.class
 com\quangvn\dao\ProductDao.class
 com\quangvn\factory\ProductFactory.class
 com\quangvn\builder\ProductBuilder.class
-com\quangvn\controller\IndexController.class
 com\quangvn\builder\ProductBuilder$ProductKeyStatusBuilder.class
 com\quangvn\dao\BaseDao.class
 com\quangvn\models\Product.class
+com\quangvn\service\ProductService$1.class
+com\quangvn\service\ProductService$ProductServiceHolder.class
+com\quangvn\dao\ProductDao$ProductDaoHolder.class
+com\quangvn\controller\IndexController.class
+com\quangvn\service\ProductService.class
 com\quangvn\controller\ProductController.class

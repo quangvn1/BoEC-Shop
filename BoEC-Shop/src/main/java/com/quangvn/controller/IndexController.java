@@ -23,7 +23,15 @@ public class IndexController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model) {
         List<Product> listHot = ProductService.getProductByKeyStatus("hot");
+        List<Product> listEndow = ProductService.getProductByKeyStatus("uudai");
+        List<Product> listSpecial = ProductService.getProductByKeyStatus("dacbiet");
+        List<Product> listSaleOff = ProductService.getProductByKeyStatus("khuyenmai");
+        List<Product> listNew = ProductService.getProductByKeyStatus("moi");
         model.addAttribute("listHot", listHot);
+        model.addAttribute("listEndow", listEndow);
+        model.addAttribute("listSpecial", listSpecial);
+        model.addAttribute("listSaleOff", listSaleOff);
+        model.addAttribute("listNew", listNew);
         return "index";
     }
 
