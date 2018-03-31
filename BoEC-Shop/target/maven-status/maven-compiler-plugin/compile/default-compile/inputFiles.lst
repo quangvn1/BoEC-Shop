@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 C:\Users\VAN\Documents\GitHub\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\dao\AccountDAO.java
 C:\Users\VAN\Documents\GitHub\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\model\AbstractRole.java
 C:\Users\VAN\Documents\GitHub\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\model\RealAccount.java
@@ -14,3 +15,13 @@ C:\Users\VAN\Documents\GitHub\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\cont
 C:\Users\VAN\Documents\GitHub\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\factory\AccountFactory.java
 C:\Users\VAN\Documents\GitHub\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\dao\BaseDAO.java
 C:\Users\VAN\Documents\GitHub\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\model\CustomerAccount.java
+=======
+D:\GITHUB\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\service\ProductService.java
+D:\GITHUB\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\dao\ProductDao.java
+D:\GITHUB\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\factory\ProductFactory.java
+D:\GITHUB\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\controller\IndexController.java
+D:\GITHUB\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\controller\ProductController.java
+D:\GITHUB\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\models\Product.java
+D:\GITHUB\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\builder\ProductBuilder.java
+D:\GITHUB\BoEC-Shop\BoEC-Shop\src\main\java\com\quangvn\dao\BaseDao.java
+>>>>>>> 6ddf41ee072d9d8cf0f7e1355304527a9c86a559

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 com\quangvn\model\NullAccount.class
 com\quangvn\controller\LogoutController.class
 com\quangvn\model\RoleCache.class
@@ -14,3 +15,18 @@ com\quangvn\model\AdminAccount.class
 com\quangvn\controller\IndexController.class
 com\quangvn\dao\AccountDAO.class
 com\quangvn\dao\BaseDAO.class
+=======
+com\quangvn\dao\ProductDao$1.class
+com\quangvn\dao\ProductDao.class
+com\quangvn\factory\ProductFactory.class
+com\quangvn\builder\ProductBuilder.class
+com\quangvn\builder\ProductBuilder$ProductKeyStatusBuilder.class
+com\quangvn\dao\BaseDao.class
+com\quangvn\models\Product.class
+com\quangvn\service\ProductService$1.class
+com\quangvn\service\ProductService$ProductServiceHolder.class
+com\quangvn\dao\ProductDao$ProductDaoHolder.class
+com\quangvn\controller\IndexController.class
+com\quangvn\service\ProductService.class
+com\quangvn\controller\ProductController.class
+>>>>>>> 6ddf41ee072d9d8cf0f7e1355304527a9c86a559
