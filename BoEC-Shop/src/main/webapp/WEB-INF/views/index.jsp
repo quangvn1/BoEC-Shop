@@ -30,7 +30,7 @@
     </head>
     <body>
         <jsp:include page="layouts/_header.jsp"></jsp:include> <!--Header-->
-
+        
             <div class="content">
                 <div class="container">
                     <div class="row">

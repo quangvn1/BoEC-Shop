@@ -1,6 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="header">
     <div class="topbar">
         <div class="container">
@@ -10,6 +9,7 @@
                     <li><span class="email">smartshop@gmail.com</span></li>
                 </ul>
             </div>
+
             <c:choose>
                 <c:when test="${user==null}">
                     <div class="topbar-right">
@@ -22,18 +22,18 @@
                 <c:when test="${user!=null}">
                     <div class="topbar-right">
                         <ul class="topbar-nav clearfix">
-                            <li><a href="#" class="login">Xin chào, ${user.firstName}</a></li>
-                            <li><a href="logout" class="registration">Đăng xuất</a></li>
+                            <li><a href="#" class="login">Xin chào, ${fullname}</a></li>
+                            <li><a href="/BoEC-Shop/logout" class="registration">Đăng xuất</a></li>
                         </ul>
                     </div>
                 </c:when>
             </c:choose>
 
-
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-                    <form name="checkLogin" id="checkLogin" method="POST" autocomplete="off">
+
+                    <form id="checkLogin" method="POST" action="/BoEC-Shop/checkLogin" autocomplete="off">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -44,20 +44,21 @@
                                 <div class="form-group">
                                     <label class="col-sm-3">Tên đăng nhập</label>
                                     <span>
-                                        <input type="text" name="username" id="username" class="input-text" value="">
+                                        <input type="text" name="username" id="username" class="input-text"/>
                                     </span>
                                 </div>
                                 <div class="form-group">
                                     <div>
                                         <label class="col-sm-3">Mật khẩu</label>
                                         <span>
-                                            <input type="password" name="password" id="password" class="input-text" value="">
+                                            <input type="password" name="password" id="password" class="input-text"/>
                                         </span>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <span><a id="login" class="btn btn-default" data-dismiss="modal" onclick="reload()">Đăng nhập</a></span>
+                                <span><input type="submit" id="login" class="btn btn-default1" data-bind="modal" value="Đăng nhập" onclick="reload()"></span>
+                                <!--<span><a id="login" class="btn btn-default1" data-dismiss="modal" onclick="reload()">Đăng nhập</a></span>-->
                             </div>
                         </div>
                     </form>
@@ -71,7 +72,7 @@
             <div class="row">
                 <div class="col-md-3">
                     <div class="logo">
-                        <a href="home" class="logo-img"><img src="images/logo.png" alt=""></a>
+                        <a href="/BoEC-Shop/" class="logo-img"><img src="images/logo.png" alt=""></a>
                         <span class="logo-text">mart Shop</span>
                     </div>
                 </div>
@@ -111,7 +112,7 @@
                     <c:if test="${user!=null}">
                         <div class="cart">
                             <div class="cart-title">
-                                <a href="cart" class="cart-text">Giỏ hàng</a>
+                                <a href="/BoEC-Shop/cart" class="cart-text">Giỏ hàng</a>
                             </div>
                         </div>
                     </c:if>
@@ -337,13 +338,13 @@
 
                 <div class="col-md-9">
                     <ul class="menu clearfix">
-                        <li><a href="home">Trang chủ</a></li>
+                        <li><a href="/BoEC-Shop/">Trang chủ</a></li>
                         <li><a href="listproduct">Sản phẩm</a></li>
                         <li><a href="#">Khuyến mại</a></li>
                         <li><a href="#">Trả góp</a></li>
                         <li><a href="#">Dịch vụ</a></li>
                         <li><a href="news">Tin tức</a></li>
-                            <c:if test="${user.roleId==1}">
+                            <c:if test='${user.getRole().getName().equals("ADMIN")}'>
                             <li><a href="indexadmin">Quản lí</a></li>
                             </c:if>
                     </ul>
@@ -358,7 +359,7 @@
         $('#login').click(function (e) {
 //            e.preventDefault();
             $.ajax({
-                url: '/Shop/login', //this is the submit URL
+                url: '/BoEC-Shop/checkLogin', //this is the submit URL
                 type: 'POST', //or POST
                 data: $('#checkLogin').serialize(),
                 success: function (data) {
