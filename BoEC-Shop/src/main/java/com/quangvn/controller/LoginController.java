@@ -29,8 +29,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
     
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public ModelAndView doLogin() {
-        return new ModelAndView("index", "acc", new NullAccount());
+    public String doLogin() {
+        return "index";
     }
     
     @RequestMapping( value="/checkLogin", method = RequestMethod.POST)

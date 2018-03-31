@@ -16,7 +16,7 @@ import java.sql.ResultSet;
  *
  * @author VAN
  */
-public class AccountDAO extends BaseDAO{
+public class AccountDAO extends BaseDao{
     
     public static Account checkAccount(String username, String password) {
         Connection con = getConnect();
