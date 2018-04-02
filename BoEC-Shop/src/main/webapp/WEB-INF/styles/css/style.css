@@ -251,6 +251,15 @@ ul {
     margin-bottom: 14px;
 }
 
+.amount-cart {
+    font-size: 14px;
+    font-weight: 600;
+    position: absolute;
+    color: #d8373e;
+    bottom: 1px;
+    right: 30px;
+}
+
 /* Menu danh mục sản phẩm */
 .mega-menu-container {
     position: relative;

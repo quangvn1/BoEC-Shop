@@ -37,7 +37,7 @@ public class ProductDao extends BaseDao {
         List<Product> list = new ArrayList<>();
         Connection conn = getConnect();
         try {
-            CallableStatement stmt = conn.prepareCall("CALL smartshop.getProductByKeyStatus(?)");
+            CallableStatement stmt = conn.prepareCall("CALL boecshop.getProductByKeyStatus(?)");
             stmt.setString(1, keyStatus);
             ResultSet rs = stmt.executeQuery();
             Product entity = null;
@@ -51,5 +51,24 @@ public class ProductDao extends BaseDao {
             closeConnection(conn);
         }
         return list;
+    }
+    
+    public static Product getProductById(int id) {
+        Product p = null;
+        Connection con = getConnect();
+        String sql = "CALL boecshop.getProductById(?)";
+        try {
+            CallableStatement stmt = con.prepareCall(sql);
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                p = ProductFactory.createProduct(rs);
+            }
+        } catch (Exception e) {
+            System.out.println("Error to get product by id index: "+ e.getMessage());
+        } finally {
+            closeConnection(con);
+        }
+        return p;
     }
 }

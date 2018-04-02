@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="css/nivo-slider.css">
         <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
@@ -29,8 +30,6 @@
     </head>
     <body>
         <jsp:include page="layouts/_header.jsp"></jsp:include> <!--End Header-->
-
-        <c:if test="${listProduct==null}">
             <div class="content">
                 <div class="sitemap">
                     <div class="container">
@@ -45,9 +44,10 @@
                 <div class="container">
                     <div class="carts">
                         <div class="table-responsive">
-                            <c:if test="${msg!=null}">
-                                <p style="color: red">${msg}</p>
-                            </c:if>
+                        <c:if test="${msg!=null}">
+                            <p style="color: red">${msg}</p>
+                        </c:if>
+                        <c:if test="${listProduct.size()>0}">
                             <table class="table custom-table">
                                 <thead>
                                     <tr>
@@ -63,17 +63,17 @@
                                         <tr>
                                             <td>
                                                 <div class="text-center">
-                                                    <a href="#">${list.name}</a>
+                                                    <a href="#">${list.product.getName()}</a>
                                                 </div>
                                             </td>
                                             <td>
                                                 <a href="#" class="product-image">
-                                                    <img src="${list.image}">
+                                                    <img src="${list.product.getImage()}">
                                                 </a>
                                             </td>
                                             <td>
                                                 <div class="text-center">
-                                                    <fmt:formatNumber type="number" value="${list.number}" />
+                                                    <fmt:formatNumber type="number" value="${list.amount}" />
                                                 </div>
                                                 <!--                                                <div class="input-group">
                                                                                                     <span class="input-group-btn">
@@ -87,12 +87,12 @@
                                             </td>
                                             <td>
                                                 <div class="dongia">
-                                                    <fmt:formatNumber type="number" value="${list.price}" />
+                                                    <fmt:formatNumber type="number" value="${list.product.getPrice()}" />
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="text-center">
-                                                    <a href="deleteincart?id=${list.id}" class="fa fa-trash-o btn-remove"></a>
+                                                    <a href="/BoEC-Shop/cart/deleteincart?id=${list.product.getId()}" class="fa fa-trash-o btn-remove"></a>
                                                 </div>
                                             </td>
                                         </tr>

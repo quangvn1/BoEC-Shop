@@ -15,7 +15,7 @@
                     <div class="topbar-right">
                         <ul class="topbar-nav clearfix">
                             <li data-toggle="modal" data-target="#myModal"><a href="#" class="login">Đăng nhập</a></li>
-                            <li><a href="registration" class="registration">Đăng ký</a></li>
+                            <li><a href="/BoEC-Shop/registration" class="registration">Đăng ký</a></li>
                         </ul>
                     </div>
                 </c:when>
@@ -32,7 +32,6 @@
             <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <!-- Modal content-->
-
                     <form id="checkLogin" method="POST" action="/BoEC-Shop/checkLogin" autocomplete="off">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -57,7 +56,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <span><input type="submit" id="login" class="btn btn-default1" data-bind="modal" value="Đăng nhập" onclick="reload()"></span>
+                                <span><input type="submit" id="login" class="btn btn-default1" data-bind="modal" value="Đăng nhập"></span>
                                 <!--<span><a id="login" class="btn btn-default1" data-dismiss="modal" onclick="reload()">Đăng nhập</a></span>-->
                             </div>
                         </div>
@@ -113,6 +112,12 @@
                         <div class="cart">
                             <div class="cart-title">
                                 <a href="/BoEC-Shop/cart" class="cart-text">Giỏ hàng</a>
+                                <c:if test="${cart!=null}">
+                                    <span class="amount-cart">(${cart.getTotalAmount()})</span>
+                                </c:if>
+                                <c:if test="${cart==null}">
+                                    <span class="amount-cart">(0)</span>
+                                </c:if>
                             </div>
                         </div>
                     </c:if>
@@ -353,23 +358,3 @@
         </div>
     </div> <!--End Header Bottom-->
 </div>
-
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#login').click(function (e) {
-//            e.preventDefault();
-            $.ajax({
-                url: '/BoEC-Shop/checkLogin', //this is the submit URL
-                type: 'POST', //or POST
-                data: $('#checkLogin').serialize(),
-                success: function (data) {
-                    alert('Đăng nhập thành công!');
-                }
-            });
-        });
-    });
-
-    function reload() {
-        location.reload();
-    }
-</script>

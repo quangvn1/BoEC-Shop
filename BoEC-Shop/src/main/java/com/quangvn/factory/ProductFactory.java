@@ -23,6 +23,7 @@ public class ProductFactory {
         entity.setImage(rs.getString("URL_IMAGE"));
         entity.setPrice(rs.getInt("PRICE"));
         entity.setOldPrice(rs.getInt("OLD_PRICE"));
+        entity.setDes(rs.getString("DES"));
         return entity;
     }
 }

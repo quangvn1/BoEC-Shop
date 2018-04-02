@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.quangvn.models.Product;
 import com.quangvn.service.ProductService;
 import java.util.List;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,23 +30,20 @@ import org.springframework.web.servlet.ModelAndView;
  * @author quangvn
  */
 @Controller
-@RequestMapping(value = "/home")
 public class IndexController extends HttpServlet {
-
-
  
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String index(Model model) {
+    public String index(Model model, HttpSession session) {
         List<Product> listHot = ProductService.getProductByKeyStatus("hot");
         List<Product> listEndow = ProductService.getProductByKeyStatus("uudai");
         List<Product> listSpecial = ProductService.getProductByKeyStatus("dacbiet");
         List<Product> listSaleOff = ProductService.getProductByKeyStatus("khuyenmai");
         List<Product> listNew = ProductService.getProductByKeyStatus("moi");
-        model.addAttribute("listHot", listHot);
-        model.addAttribute("listEndow", listEndow);
-        model.addAttribute("listSpecial", listSpecial);
-        model.addAttribute("listSaleOff", listSaleOff);
-        model.addAttribute("listNew", listNew);
+        session.setAttribute("listHot", listHot);
+        session.setAttribute("listEndow", listEndow);
+        session.setAttribute("listSpecial", listSpecial);
+        session.setAttribute("listSaleOff", listSaleOff);
+        session.setAttribute("listNew", listNew);
         return "index";
     }
 

@@ -15,6 +15,7 @@
         <link rel="stylesheet" type="text/css" href="css/nivo-slider.css">
         <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
@@ -30,7 +31,7 @@
     </head>
     <body>
         <jsp:include page="layouts/_header.jsp"></jsp:include> <!--Header-->
-        
+
             <div class="content">
                 <div class="container">
                     <div class="row">
@@ -143,7 +144,7 @@
                                                     </a>
                                                     <div class="box-hover">
                                                         <ul>
-                                                            <li><a href="productdetail?id=${hot.id}" class="quickview">Chi tiết</a></li>
+                                                            <li><a href="/BoEC-Shop/productdetail?id=${hot.id}" class="quickview">Chi tiết</a></li>
                                                             <li><a href="#" class="favorite">Quan tâm</a></li>
                                                             <li><a href="#" class="compare">So sánh</a></li>
                                                                 <c:if test="${user!=null}">
@@ -246,7 +247,7 @@
                                                             <li><a href="#" class="favorite">Quan tâm</a></li>
                                                             <li><a href="#" class="compare">So sánh</a></li>
                                                                 <c:if test="${user!=null}">
-                                                                <li><a href="addtocart?id=${newProduct.id}" class="addtocart">Mua ngay</a></li>
+                                                                <li><a href="/BoEC-Shop/addtocart?id=${newProduct.id}" class="addtocart">Mua ngay</a></li>
                                                                 </c:if>
                                                         </ul>
                                                     </div>
@@ -275,5 +276,22 @@
 
         <jsp:include page="layouts/_footer.jsp"></jsp:include><!--Footer-->
 
+        <c:choose>
+            <c:when test='${resultLogin.equals("success")}'>
+                <script type="text/javascript">
+                    $(function () {
+                        alert("Đăng nhập thành công!");
+                    });
+                </script>
+            </c:when>
+            <c:when test='${resultLogin.equals("fail")}'>
+                <script type="text/javascript">
+                    $(function () {
+                        alert("Sai tài khoản hoặc mật khẩu!");
+                    });
+                </script>
+            </c:when>
+        </c:choose>
+        <% session.removeAttribute("resultLogin");%>
     </body>
 </html>
