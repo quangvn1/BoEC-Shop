@@ -10,25 +10,26 @@
         <meta charset="utf-8">
 
         <link rel="icon" type="text/x-icon" href="images/logo.png">
-        <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="styles/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="styles/css/nivo-slider.css">
-        <link rel="stylesheet" type="text/css" href="styles/css/owl.carousel.css">
-        <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/nivo-slider.css">
+        <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 
         <!-- Script -->
-        <script type="text/javascript" src="styles/js/jquery-3.2.1.min.js"></script>
-        <script type="text/javascript" src="styles/js/bootstrap.min.js"></script>
-        <script type="text/javascript" src="styles/js/jquery.nivo.slider.pack.js"></script>
-        <script type="text/javascript" src="styles/js/owl.carousel.min.js"></script>
-        <script type="text/javascript" src="styles/js/main.js"></script>
+        <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/bootstrap.min.js"></script>
+        <script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+        <script type="text/javascript" src="js/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+        <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
     </head>
     <body>
-        <jsp:include page="layouts/_header.jsp"></jsp:include> <!--Header-->
+        <jsp:include page="/WEB-INF/views/layouts/_header.jsp"></jsp:include> <!--Header-->
 
             <div class="content">
                 <div class="sitemap">
@@ -47,27 +48,26 @@
                             <div class="title-choice">
                                 <div>Sắp xếp theo</div>
                             </div>
-                            <div class="sort-choice">
-                                <div class="sort-by-firm">
-                                    <h3>Lọc theo hãng</h3>
-                                    <ul class="list-choice">
-                                        <li><a href="#">canon</a></li>
-                                        <li><a href="#">samsung</a></li>
-                                        <li><a href="#">apple</a></li>
-                                        <li><a href="#">nikon</a></li>
-                                        <li><a href="#">dell</a></li>
-                                        <li><a href="#">sony</a></li>
-                                    </ul>
+                            <form action="filterproduct" method="POST">
+                                <div class="sort-choice">
+                                    <div class="sort-by-firm">
+                                        <h3>Loại sản phẩm</h3>
+                                        <ul class="list-choice">
+                                            <li><input type="checkbox" id="typeProduct" name="typeProduct" value="Book" <c:if test="${typeProduct=='Book'}"> checked</c:if> > Sách</li>
+                                            <li><input type="checkbox" id="typeProduct" name="typeProduct" value="Electronic" <c:if test="${typeProduct=='Electronic'}"> checked</c:if>> Đồ điện tử</li>
+                                            <li><input type="checkbox" id="typeProduct" name="typeProduct" value="Clothes" <c:if test="${typeProduct=='Clothes'}"> checked</c:if>> Quần áo</li>
+                                        </ul>
+                                    </div>
+                                    <div class="sort-by-firm">
+                                        <h3>Mức giá</h3>
+                                        <ul class="list-choice">
+                                            <li><input type="checkbox" id="price" name="price" value="low" <c:if test="${price=='low'}"> checked</c:if>> 1 - 3 triệu</li>
+                                            <li><input type="checkbox" id="price" name="price" value="medium" <c:if test="${price=='medium'}"> checked</c:if>> 3 - 8 triệu</li>
+                                        </ul>
+                                    </div>
+                                    <input class="btn btn-danger" type="submit" name="submit" value="Tìm kiếm" />
                                 </div>
-                                <div class="sort-by-price">
-                                    <h3>Lọc theo giá</h3>
-                                    <form>
-                                        <span><input type="text" name="" class="input-text" value="0"></span>
-                                        <span><input type="text" name="" class="input-text" value="999"></span>
-                                        <button type="submit" name="" class="btn">Tìm</button>
-                                    </form>
-                                </div>
-                            </div>
+                            </form>
                             <div class="banner-left"><a href="#"><img src="images/ads/ads-01.jpg" alt=""></a>
                                 <div class="banner-content">
                                     <h1>Giảm giá tới</h1>
@@ -172,7 +172,7 @@
         </div> <!--End Content-->
 
 
-        <jsp:include page="layouts/_footer.jsp"></jsp:include><!--Footer-->
+        <jsp:include page="/WEB-INF/views/layouts/_footer.jsp"></jsp:include><!--Footer-->
 
         <script type="text/javascript">
             $(function () {

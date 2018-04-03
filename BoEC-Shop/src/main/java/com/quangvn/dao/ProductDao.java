@@ -7,12 +7,15 @@ package com.quangvn.dao;
 
 import static com.quangvn.dao.BaseDao.getConnect;
 import com.quangvn.factory.ProductFactory;
+import com.quangvn.models.AbstractProduct;
+import com.quangvn.models.NullProduct;
 import com.quangvn.models.Product;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -70,5 +73,45 @@ public class ProductDao extends BaseDao {
             closeConnection(con);
         }
         return p;
+    }
+    
+    public List<AbstractProduct> getProductByName(String key) {
+        Connection conn = getConnect();
+        List<AbstractProduct> list = new ArrayList<>();
+        Product entity;
+        try {
+            CallableStatement cs = conn.prepareCall("CALL smartshop.getProductByName(?)");
+            cs.setString(1, key);
+            ResultSet rs = cs.executeQuery();
+            while (rs.next()) {
+                entity = ProductFactory.createProduct(rs);
+                list.add(entity);
+            }
+            return list;
+        } catch (Exception e) {
+            System.out.println("Error to get product by name: " + e.getMessage());
+        } finally {
+            closeConnection(conn);
+        }
+        return new ArrayList<AbstractProduct>((Collection<? extends AbstractProduct>) new NullProduct());
+    }
+    
+    public List<Product> getProduct() {
+        List<Product> list = new ArrayList<>();
+        Connection conn = getConnect();
+        try {
+            CallableStatement cs = conn.prepareCall("CALL smartshop.getProduct()");
+            ResultSet rs = cs.executeQuery();
+            Product entity;
+            while (rs.next()) {
+                entity = ProductFactory.createProduct(rs);
+                list.add(entity);
+            }
+        } catch (Exception e) {
+            System.out.println("Error to get list product:" + e.getMessage());
+        } finally {
+            closeConnection(conn);
+        }
+        return list;
     }
 }

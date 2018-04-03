@@ -9,7 +9,7 @@ package com.quangvn.models;
  *
  * @author quangvn
  */
-public class Product {
+public class Product extends AbstractProduct{
 
     private int id;
 
@@ -102,6 +102,11 @@ public class Product {
 
     public void setOldPrice(int oldPrice) {
         this.oldPrice = oldPrice;
+    }
+
+    @Override
+    public boolean isNull() {
+        return true;
     }
 
 }

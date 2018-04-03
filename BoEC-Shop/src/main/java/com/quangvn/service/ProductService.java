@@ -6,6 +6,7 @@
 package com.quangvn.service;
 
 import com.quangvn.dao.ProductDao;
+import com.quangvn.models.AbstractProduct;
 import com.quangvn.models.Product;
 import java.util.List;
 
@@ -27,7 +28,15 @@ public class ProductService {
         private static final ProductService INSTANCE = new ProductService();
     }
     
-    public static List<Product> getProductByKeyStatus(String keyStatus){
+    public List<Product> getProductByKeyStatus(String keyStatus){
         return ProductDao.getProductByKeyStatus(keyStatus);
+    }
+    
+    public List<Product> getProduct() {
+        return ProductDao.getInstance().getProduct();
+    }
+
+    public List<AbstractProduct> getProductByName(String key) {
+        return ProductDao.getInstance().getProductByName(key);
     }
 }
