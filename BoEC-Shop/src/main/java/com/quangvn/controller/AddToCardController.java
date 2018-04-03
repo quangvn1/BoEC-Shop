@@ -26,11 +26,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author VAN
  */
 @Controller
-@RequestMapping(value = "/addtocart")
 public class AddToCardController {
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public void addToCart(HttpServletRequest request, HttpServletResponse response) throws IOException, CloneNotSupportedException {
+    @RequestMapping(value = "/addtocart", method = RequestMethod.GET)
+    public String addToCart(HttpServletRequest request, HttpServletResponse response) throws IOException, CloneNotSupportedException {
         HttpSession session = request.getSession();
         Account user = (Account) session.getAttribute("user");
         Bill bill = BillDao.getBillNotPayByUser(user);
@@ -63,11 +62,11 @@ public class AddToCardController {
             }
         }
         session.setAttribute("cart", cart.clone());
-        response.sendRedirect("/BoEC-Shop/cart");
+        return "redirect:/cart";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
-    public void addToCartPost(HttpServletRequest request, HttpServletResponse response) throws IOException, CloneNotSupportedException {
+    @RequestMapping(value = "/addtocart", method = RequestMethod.POST)
+    public String addToCartPost(HttpServletRequest request, HttpServletResponse response) throws IOException, CloneNotSupportedException {
         HttpSession session = request.getSession();
         Account user = (Account) session.getAttribute("user");
         Bill bill = BillDao.getBillNotPayByUser(user);
@@ -97,7 +96,7 @@ public class AddToCardController {
             }
         }
         session.setAttribute("cart", cart.clone());
-        response.sendRedirect("/BoEC-Shop/cart");
+        return "redirect:/cart";
     }
 
 }

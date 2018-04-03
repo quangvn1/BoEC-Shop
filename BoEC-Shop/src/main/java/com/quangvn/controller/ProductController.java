@@ -19,15 +19,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author quangvn
  */
 @Controller
-@RequestMapping(value = "/productdetail")
 public class ProductController {
     
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/productdetail", method = RequestMethod.GET)
     public String showProductDetail(Model model, HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt((String) request.getParameter("id"));
         Product product = ProductDao.getProductById(id);
         model.addAttribute("product", product);
-        return "productdetail";
+        return "product/productdetail";
     }
     
 }

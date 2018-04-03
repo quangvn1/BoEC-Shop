@@ -36,7 +36,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class LoginController {
 
     @RequestMapping(value = "/checkLogin", method = RequestMethod.POST)
-    public void checkUser(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException, CloneNotSupportedException {
+    public String checkUser(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException, CloneNotSupportedException {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         Account entity = AccountDao.checkAccount(username, password);
@@ -54,6 +54,6 @@ public class LoginController {
         } else {
             session.setAttribute("resultLogin", "fail");
         }
-        response.sendRedirect("/BoEC-Shop/");
+        return "redirect:/";
     }
 }

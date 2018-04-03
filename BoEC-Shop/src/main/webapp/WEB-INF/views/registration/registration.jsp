@@ -28,7 +28,7 @@
         <script type="text/javascript" src="js/main.js"></script>
     </head>
     <body>
-        <jsp:include page="layouts/_header.jsp"></jsp:include> <!--End Header-->
+        <jsp:include page="/WEB-INF/views/layouts/_header.jsp"></jsp:include> <!--End Header-->
 
             <div class="content">
                 <div class="sitemap">
@@ -155,7 +155,7 @@
             </div>
         </div> <!--End Content-->
 
-        <jsp:include page="layouts/_footer.jsp"></jsp:include><!--Footer bot-->
+        <jsp:include page="/WEB-INF/views/layouts/_footer.jsp"></jsp:include><!--Footer bot-->
 
         <script type="text/javascript">
             $(function () {

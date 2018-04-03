@@ -29,7 +29,7 @@
         <script type="text/javascript" src="js/main.js"></script>
     </head>
     <body>
-        <jsp:include page="layouts/_header.jsp"></jsp:include> <!--End Header-->
+        <jsp:include page="/WEB-INF/views/layouts/_header.jsp"></jsp:include> <!--End Header-->
             <div class="content">
                 <div class="sitemap">
                     <div class="container">
@@ -92,7 +92,7 @@
                                             </td>
                                             <td>
                                                 <div class="text-center">
-                                                    <a href="/BoEC-Shop/cart/deleteincart?id=${list.product.getId()}" class="fa fa-trash-o btn-remove"></a>
+                                                    <a href="deleteincart?id=${list.product.getId()}" class="fa fa-trash-o btn-remove"></a>
                                                 </div>
                                             </td>
                                         </tr>
@@ -129,7 +129,7 @@
             </div>
         </c:if><!--End Content-->
 
-        <jsp:include page="layouts/_footer.jsp"></jsp:include><!--Footer bot-->
+        <jsp:include page="/WEB-INF/views/layouts/_footer.jsp"></jsp:include><!--Footer bot-->
 
         <script type="text/javascript">
             $(function () {

@@ -18,13 +18,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author VAN
  */
 @Controller
-@RequestMapping(value = "/logout")
 public class LogoutController {
     
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    public void doLogout(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String doLogout(HttpSession session){
         session.invalidate();
-        response.sendRedirect("/BoEC-Shop/");
+        return "redirect:/";
     }
     
 }

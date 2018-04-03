@@ -9,7 +9,7 @@ package com.quangvn.model;
  *
  * @author VAN
  */
-public abstract class RealAccount extends Account{
+public class RealAccount extends Account{
 
     @Override
     public boolean isNull() {

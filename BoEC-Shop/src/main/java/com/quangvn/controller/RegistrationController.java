@@ -23,15 +23,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * @author VAN
  */
 @Controller
-@RequestMapping(value = "/registration")
 public class RegistrationController {
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showPage() {
-        return "registration";
+        return "registration/registration";
     }
 
-    @RequestMapping(value = "", method = RequestMethod.POST)
+    @RequestMapping(value = "/registration", method = RequestMethod.POST)
     public String registration(HttpServletRequest request, HttpServletResponse response, HttpSession session) throws UnsupportedEncodingException, IOException {
         request.setCharacterEncoding("UTF-8");
         String username = request.getParameter("username");
@@ -67,7 +66,7 @@ public class RegistrationController {
             String warn = "Quý khách chưa nhập đủ thông tin đăng kí";
             request.setAttribute("warn", warn);
         }
-        return "registration";
+        return "registration/registration";
     }
 
 }

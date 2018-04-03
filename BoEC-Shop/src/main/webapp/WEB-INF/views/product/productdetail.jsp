@@ -29,7 +29,7 @@
         <script type="text/javascript" src="js/main.js"></script>
     </head>
     <body>
-        <jsp:include page="layouts/_header.jsp"></jsp:include><!--End Header-->
+        <jsp:include page="/WEB-INF/views/layouts/_header.jsp"></jsp:include><!--End Header-->
 
             <div class="content">
                 <div class="sitemap">
@@ -65,7 +65,7 @@
                                     <div class="desc std">
                                         ${product.des}
                                     </div>
-                                    <form action="/BoEC-Shop/addtocart" method="POST" class="form-horizontal">
+                                    <form action="addtocart" method="POST" class="form-horizontal">
                                         <div class="form-group" style="margin-left: 0px;">
                                             <input type="text" value="${product.id}" class="hidden" name="id">
                                             <label class="col-md-2 col-sm-3 control-label">Số lượng:</label>
@@ -197,7 +197,7 @@
             </div>
         </div> <!--End Content-->
 
-        <jsp:include page="layouts/_footer.jsp"></jsp:include><!--Footer bot-->
+        <jsp:include page="/WEB-INF/views/layouts/_footer.jsp"></jsp:include><!--Footer bot-->
 
             <script type="text/javascript">
                 $(function () {
@@ -239,7 +239,6 @@
                         maxResults: 1,
                         order: 'viewCount'
                     });
-
                     request.execute(function (response) {
                         var result = response.result;
                         $("#video-container").html("");

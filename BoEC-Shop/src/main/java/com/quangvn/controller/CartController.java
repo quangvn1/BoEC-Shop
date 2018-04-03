@@ -30,10 +30,9 @@ import org.springframework.web.servlet.ModelAndView;
  * @author VAN
  */
 @Controller
-@RequestMapping(value = "/cart")
 public class CartController {
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String doCart(HttpSession session, Model model) throws CloneNotSupportedException {
         Account user = (Account) session.getAttribute("user");
         Cart cart = (Cart) session.getAttribute("cart");
@@ -48,12 +47,12 @@ public class CartController {
         if (listProduct.size() == 0) {
             model.addAttribute("msg", "Quý khách chưa có sản phẩm nào trong giỏ hàng");
         }
-        session.setAttribute("listProduct", listProduct);
-        return "cart";
+        model.addAttribute("listProduct", listProduct);
+        return "cart/cart";
     }
 
     @RequestMapping(value = "/deleteincart", method = RequestMethod.GET)
-    public void deleteInCart(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String deleteInCart(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         int id_product = Integer.parseInt((String) request.getParameter("id"));
         Account user = (Account) session.getAttribute("user");
@@ -62,7 +61,7 @@ public class CartController {
         CartDao.deleteProductCart(id_product, bill);
         cart.deleteProduct(id_product);
         session.setAttribute("cart", cart);
-        response.sendRedirect("/BoEC-Shop/cart");
+        return "redirect:/cart";
     }
 
 }

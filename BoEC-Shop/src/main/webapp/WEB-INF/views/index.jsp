@@ -30,7 +30,7 @@
         <script type="text/javascript" src="https://apis.google.com/js/client.js"></script>
     </head>
     <body>
-        <jsp:include page="layouts/_header.jsp"></jsp:include> <!--Header-->
+        <jsp:include page="/WEB-INF/views/layouts/_header.jsp"></jsp:include> <!--Header-->
 
             <div class="content">
                 <div class="container">
@@ -144,7 +144,7 @@
                                                     </a>
                                                     <div class="box-hover">
                                                         <ul>
-                                                            <li><a href="/BoEC-Shop/productdetail?id=${hot.id}" class="quickview">Chi tiết</a></li>
+                                                            <li><a href="productdetail?id=${hot.id}" class="quickview">Chi tiết</a></li>
                                                             <li><a href="#" class="favorite">Quan tâm</a></li>
                                                             <li><a href="#" class="compare">So sánh</a></li>
                                                                 <c:if test="${user!=null}">
@@ -274,7 +274,7 @@
             </div>
         </div> <!--End Content-->
 
-        <jsp:include page="layouts/_footer.jsp"></jsp:include><!--Footer-->
+        <jsp:include page="/WEB-INF/views/layouts/_footer.jsp"></jsp:include><!--Footer-->
 
         <c:choose>
             <c:when test='${resultLogin.equals("success")}'>
