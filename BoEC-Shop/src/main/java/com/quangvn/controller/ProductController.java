@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,27 +31,28 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class ProductController {
-    
+
     @RequestMapping(value = "/productdetail", method = RequestMethod.GET)
     public String showProductDetail(Model model, HttpServletRequest request, HttpServletResponse response) {
         int id = Integer.parseInt((String) request.getParameter("id"));
-        Product product = ProductDao.getProductById(id);
+        Product product = ProductDao.getInstance().getProductById(id);
         model.addAttribute("product", product);
         return "product/productdetail";
     }
-    
+
     @RequestMapping(value = "/listproduct", method = RequestMethod.GET)
-    public String getProduct(Model model) {
+    public String getProduct(Model model, HttpSession session) {
         List<Product> listSpecial = ProductService.getInstance().getProductByKeyStatus("dacbiet");
         List<Product> listProduct = ProductService.getInstance().getProduct();
+        session.setAttribute("list", listProduct);
         model.addAttribute("listSpecial", listSpecial);
         model.addAttribute("listProduct", listProduct);
         return "product/listproduct";
     }
 
     @RequestMapping(value = "/filterproduct", method = RequestMethod.POST)
-    public String filterProduct(Model model, String typeProduct, String price) {
-        List<Product> list = ProductService.getInstance().getProduct();
+    public String filterProduct(Model model, String typeProduct, String price,HttpSession session) {
+        List<Product> list = (List<Product>) session.getAttribute("list");
         List<Product> listSpecial = ProductService.getInstance().getProductByKeyStatus("dacbiet");
         List<Product> listTemp;
         List<Product> listProduct = new ArrayList<>();

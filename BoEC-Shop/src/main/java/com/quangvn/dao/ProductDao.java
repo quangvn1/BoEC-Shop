@@ -36,11 +36,11 @@ public class ProductDao extends BaseDao {
         private static final ProductDao INSTANCE = new ProductDao();
     }
 
-    public static List<Product> getProductByKeyStatus(String keyStatus) {
+    public List<Product> getProductByKeyStatus(String keyStatus) {
         List<Product> list = new ArrayList<>();
         Connection conn = getConnect();
         try {
-            CallableStatement stmt = conn.prepareCall("CALL boecshop.getProductByKeyStatus(?)");
+            CallableStatement stmt = conn.prepareCall("CALL " + SCHEMA_NAME + ".getProductByKeyStatus(?)");
             stmt.setString(1, keyStatus);
             ResultSet rs = stmt.executeQuery();
             Product entity = null;
@@ -55,11 +55,11 @@ public class ProductDao extends BaseDao {
         }
         return list;
     }
-    
-    public static Product getProductById(int id) {
+
+    public Product getProductById(int id) {
         Product p = null;
         Connection con = getConnect();
-        String sql = "CALL boecshop.getProductById(?)";
+        String sql = "CALL" + SCHEMA_NAME + ".getProductById(?)";
         try {
             CallableStatement stmt = con.prepareCall(sql);
             stmt.setInt(1, id);
@@ -68,19 +68,19 @@ public class ProductDao extends BaseDao {
                 p = ProductFactory.createProduct(rs);
             }
         } catch (Exception e) {
-            System.out.println("Error to get product by id index: "+ e.getMessage());
+            System.out.println("Error to get product by id index: " + e.getMessage());
         } finally {
             closeConnection(con);
         }
         return p;
     }
-    
+
     public List<AbstractProduct> getProductByName(String key) {
         Connection conn = getConnect();
         List<AbstractProduct> list = new ArrayList<>();
         Product entity;
         try {
-            CallableStatement cs = conn.prepareCall("CALL smartshop.getProductByName(?)");
+            CallableStatement cs = conn.prepareCall("CALL " + SCHEMA_NAME + ".getProductByName(?)");
             cs.setString(1, key);
             ResultSet rs = cs.executeQuery();
             while (rs.next()) {
@@ -95,12 +95,12 @@ public class ProductDao extends BaseDao {
         }
         return new ArrayList<AbstractProduct>((Collection<? extends AbstractProduct>) new NullProduct());
     }
-    
+
     public List<Product> getProduct() {
         List<Product> list = new ArrayList<>();
         Connection conn = getConnect();
         try {
-            CallableStatement cs = conn.prepareCall("CALL smartshop.getProduct()");
+            CallableStatement cs = conn.prepareCall("CALL " + SCHEMA_NAME + ".getProduct()");
             ResultSet rs = cs.executeQuery();
             Product entity;
             while (rs.next()) {

@@ -46,17 +46,17 @@ public class AddToCardController {
             BillDao.createBill(newBill);
             newBill.setId(BillDao.getIdNewBill(newBill));
             CartDao.insertProductCart(Integer.parseInt(id_product), newBill, number);
-            product = new ProductCart(ProductDao.getProductById(Integer.parseInt(id_product)), 1);
+            product = new ProductCart(ProductDao.getInstance().getProductById(Integer.parseInt(id_product)), 1);
             cart.addProductCart(product);
         } else {
             cart = (Cart) session.getAttribute("cart");
             if (CartDao.checkExistProductCart(Integer.parseInt(id_product), bill.getId())) {
                 int num = CartDao.getNumberProduct(Integer.parseInt(id_product), bill.getId()) + 1;
                 CartDao.updateNumberProduct(Integer.parseInt(id_product), bill.getId(), num);
-                product = new ProductCart(ProductDao.getProductById(Integer.parseInt(id_product)), num);
+                product = new ProductCart(ProductDao.getInstance().getProductById(Integer.parseInt(id_product)), num);
                 cart.updateProduct(product);
             } else {
-                new ProductCart(ProductDao.getProductById(Integer.parseInt(id_product)), 1);
+                new ProductCart(ProductDao.getInstance().getProductById(Integer.parseInt(id_product)), 1);
                 CartDao.insertProductCart(Integer.parseInt(id_product), bill, 1);
                 cart.addProductCart(product);
             }
@@ -73,7 +73,7 @@ public class AddToCardController {
         String id_product = request.getParameter("id");
         int number = Integer.parseInt((String) request.getParameter("number"));
         Cart cart = new Cart(user);
-        ProductCart product = new ProductCart(ProductDao.getProductById(Integer.parseInt(id_product)), number);
+        ProductCart product = new ProductCart(ProductDao.getInstance().getProductById(Integer.parseInt(id_product)), number);
         if (bill == null) {
             Bill newBill = new Bill();
             Calendar today = Calendar.getInstance();

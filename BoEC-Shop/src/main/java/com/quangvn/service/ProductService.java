@@ -29,7 +29,7 @@ public class ProductService {
     }
     
     public List<Product> getProductByKeyStatus(String keyStatus){
-        return ProductDao.getProductByKeyStatus(keyStatus);
+        return ProductDao.getInstance().getProductByKeyStatus(keyStatus);
     }
     
     public List<Product> getProduct() {

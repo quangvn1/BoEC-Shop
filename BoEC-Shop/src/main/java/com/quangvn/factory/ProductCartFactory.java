@@ -10,8 +10,6 @@ import com.quangvn.models.Product;
 import com.quangvn.models.ProductCart;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -23,7 +21,7 @@ public class ProductCartFactory {
         Product product = null;
         int amount = 0;
         try {
-            product = ProductDao.getProductById(rs.getInt("ID_PRODUCT"));
+            product = ProductDao.getInstance().getProductById(rs.getInt("ID_PRODUCT"));
             amount = rs.getInt("NUMBER");
         } catch (SQLException ex) {
             System.out.println("Error in get product cart factory: " + ex.getMessage());
