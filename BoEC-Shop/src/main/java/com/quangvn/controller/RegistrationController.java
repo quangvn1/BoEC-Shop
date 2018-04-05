@@ -8,6 +8,10 @@ package com.quangvn.controller;
 import com.quangvn.dao.AccountDao;
 import com.quangvn.model.Account;
 import com.quangvn.model.CustomerAccount;
+import com.tungns.chain.AbstractChecking;
+import com.tungns.chain.EmailChecking;
+import com.tungns.chain.TelChecking;
+import com.tungns.chain.UsernameChecking;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +29,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class RegistrationController {
 
+    public static boolean[] arrayError = {false, false, false};
+    
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showPage() {
         return "registration/registration";
@@ -50,11 +56,13 @@ public class RegistrationController {
             user.setFullname(fullName);
             user.setGender(gender);
             user.setAddress(address);
-            if (AccountDao.checkExistUser(username)) {
+            AbstractChecking chainChecking = getChainChecking();
+            chainChecking.checkAccount(AbstractChecking.TEL, user);
+            if (arrayError[AbstractChecking.USERNAME]) {
                 request.setAttribute("msgUsername", "Tài khoản đã tồn tại");
-            } else if (AccountDao.checkExistEmail(email)) {
+            } else if (arrayError[AbstractChecking.EMAIL]) {
                 request.setAttribute("msgEmail", "Email đã được đăng kí");
-            } else if (AccountDao.checkExistTel(tel)) {
+            } else if (arrayError[AbstractChecking.TEL]) {
                 request.setAttribute("msgTel", "Số điện thoại đã được đăng kí");
             } else if (AccountDao.registration(user)) {
                 request.setAttribute("msg", "Đăng kí tài khoản mới thành công");
@@ -67,6 +75,17 @@ public class RegistrationController {
             request.setAttribute("warn", warn);
         }
         return "registration/registration";
+    }
+    
+    public AbstractChecking getChainChecking(){
+        AbstractChecking usernameChecking = new UsernameChecking(AbstractChecking.USERNAME);
+        AbstractChecking emailChecking = new EmailChecking(AbstractChecking.EMAIL);
+        AbstractChecking telChecking = new TelChecking(AbstractChecking.TEL);
+        
+        usernameChecking.setNextCheck(emailChecking);
+        emailChecking.setNextCheck(telChecking);
+        
+        return usernameChecking;
     }
 
 }
