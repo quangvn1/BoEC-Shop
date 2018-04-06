@@ -24,6 +24,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  *
@@ -51,7 +52,7 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/filterproduct", method = RequestMethod.POST)
-    public String filterProduct(Model model, String typeProduct, String price,HttpSession session) {
+    public String filterProduct(Model model, String typeProduct, String price, HttpSession session) {
         List<Product> list = (List<Product>) session.getAttribute("list");
         List<Product> listSpecial = ProductService.getInstance().getProductByKeyStatus("dacbiet");
         List<Product> listTemp;

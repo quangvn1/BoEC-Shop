@@ -54,15 +54,15 @@
                                         <h3>Loại sản phẩm</h3>
                                         <ul class="list-choice">
                                             <li><input type="checkbox" id="typeProduct" name="typeProduct" value="Book" <c:if test="${typeProduct=='Book'}"> checked</c:if> > Sách</li>
-                                            <li><input type="checkbox" id="typeProduct" name="typeProduct" value="Electronic" <c:if test="${typeProduct=='Electronic'}"> checked</c:if>> Đồ điện tử</li>
-                                            <li><input type="checkbox" id="typeProduct" name="typeProduct" value="Clothes" <c:if test="${typeProduct=='Clothes'}"> checked</c:if>> Quần áo</li>
+                                        <li><input type="checkbox" id="typeProduct" name="typeProduct" value="Electronic" <c:if test="${typeProduct=='Electronic'}"> checked</c:if>> Đồ điện tử</li>
+                                        <li><input type="checkbox" id="typeProduct" name="typeProduct" value="Clothes" <c:if test="${typeProduct=='Clothes'}"> checked</c:if>> Quần áo</li>
                                         </ul>
                                     </div>
                                     <div class="sort-by-firm">
                                         <h3>Mức giá</h3>
                                         <ul class="list-choice">
                                             <li><input type="checkbox" id="price" name="price" value="low" <c:if test="${price=='low'}"> checked</c:if>> 1 - 3 triệu</li>
-                                            <li><input type="checkbox" id="price" name="price" value="medium" <c:if test="${price=='medium'}"> checked</c:if>> 3 - 8 triệu</li>
+                                        <li><input type="checkbox" id="price" name="price" value="medium" <c:if test="${price=='medium'}"> checked</c:if>> 3 - 8 triệu</li>
                                         </ul>
                                     </div>
                                     <input class="btn btn-danger" type="submit" name="submit" value="Tìm kiếm" />
@@ -179,5 +179,6 @@
                 $('.mega-menu')[0].style.display = "none";
             });
         </script>
-    </body>
+    </script>
+</body>
 </html>
