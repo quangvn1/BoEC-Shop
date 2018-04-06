@@ -26,6 +26,7 @@ public class ProductFactory {
         entity.setPrice(rs.getInt("PRICE"));
         entity.setKeyStatus(rs.getString("KEY_STATUS"));
         entity.setOldPrice(rs.getInt("OLD_PRICE"));
+        entity.setDes(rs.getString("DES"));
         return entity;
     }
 }
