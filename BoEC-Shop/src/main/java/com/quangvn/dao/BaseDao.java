@@ -17,15 +17,15 @@ public class BaseDao {
 
 //    protected String SCHEMA_NAME = "boecshop";
     
-    protected String SCHEMA_NAME = "boecshop";
+    protected String SCHEMA_NAME = "smartshop";
 
     protected static Connection getConnect() {
         String classname = "com.mysql.jdbc.Driver";
 //        String url = "jdbc:mysql://localhost:3306/boecshop?useSSL=true";
-        String url = "jdbc:mysql://localhost:3307/boecshop?useSSL=true";
+        String url = "jdbc:mysql://localhost:3306/smartshop?useSSL=true";
         String user = "root";
 //        String pass = "vanhy";
-        String pass = "1234";
+        String pass = "b14dccn021";
         Connection con = null;
         try {
             Class.forName(classname);
