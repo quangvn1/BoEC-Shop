@@ -59,7 +59,7 @@ public class ProductDao extends BaseDao {
     public Product getProductById(int id) {
         Product p = null;
         Connection con = getConnect();
-        String sql = "CALL" + SCHEMA_NAME + ".getProductById(?)";
+        String sql = "CALL " + SCHEMA_NAME + ".getProductById(?)";
         try {
             CallableStatement stmt = con.prepareCall(sql);
             stmt.setInt(1, id);

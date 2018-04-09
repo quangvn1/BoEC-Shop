@@ -47,7 +47,7 @@ public class LoginController {
             Cart cart = new Cart(entity);
             Bill bill = BillDao.getBillNotPayByUser(entity);
             if (bill != null) {
-                cart.loadData(bill);
+                cart.loadData(bill, entity);
                 session.setAttribute("cart", cart.clone());
             }
             session.setAttribute("resultLogin","success");

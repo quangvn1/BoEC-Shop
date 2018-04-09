@@ -39,7 +39,7 @@ public class CartController {
         Bill bill = BillDao.getBillNotPayByUser(user);
         List<ProductCart> listProduct = new ArrayList<>();
         if (bill != null) {
-            cart.loadData(bill);
+            cart.loadData(bill, user);
             listProduct = cart.getListProduct();
             int amount = cart.getCost();
             model.addAttribute("amount", amount);

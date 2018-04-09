@@ -88,8 +88,8 @@ public class Cart implements Cloneable {
         return _amount;
     }
 
-    public void loadData(Bill bill) {
-        this.listProduct = CartDao.getCurrentCart(bill);
+    public void loadData(Bill bill, Account account) {
+        this.listProduct = CartDao.getCurrentCart(bill, account);
     }
 
     @Override

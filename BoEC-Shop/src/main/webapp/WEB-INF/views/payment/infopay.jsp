@@ -8,11 +8,12 @@
         <meta charset="utf-8">
 
         <link rel="icon" type="text/x-icon" href="images/logo.png">
-        <link rel="stylesheet" type="text/css" href="styles/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="styles/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="styles/css/nivo-slider.css">
-        <link rel="stylesheet" type="text/css" href="styles/css/owl.carousel.css">
-        <link rel="stylesheet" type="text/css" href="styles/css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
+        <link rel="stylesheet" type="text/css" href="css/nivo-slider.css">
+        <link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <link rel="stylesheet" type="text/css" href="css/responsive.css">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='http://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
@@ -26,8 +27,7 @@
         <script type="text/javascript" src="styles/js/main.js"></script>
     </head>
     <body>
-        <jsp:include page="layouts/_header.jsp"></jsp:include> <!--End Header-->
-
+        <jsp:include page="/WEB-INF/views/layouts/_header.jsp"></jsp:include> <!--End Header-->
             <div class="content">
                 <div class="container">
                     <div class="row">
@@ -41,7 +41,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7">
-                                        <input type="text" name="fullname" value="${user.fullName}" class="input-text add-product" readonly>
+                                        <input type="text" name="fullname" value="${user.fullname}" class="input-text add-product" readonly>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="add-title">
@@ -57,7 +57,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7">
-                                        <input type="text" name="tel" value="${user.tel}" class="input-text add-product" readonly>
+                                        <input type="text" name="tel" value="${user.phone}" class="input-text add-product" readonly>
                                     </div>
                                     <div class="col-md-5">
                                         <div class="add-title">
@@ -76,7 +76,7 @@
                                         </div>
                                     </div>
                                     <div class="col-md-7">
-                                        <input type="text" name="address" class="input-text add-product">
+                                        <input type="text" name="address" class="input-text add-product" value="${user.address}">
                                     </div>
                                     <div class="col-md-7 col-offset-5">
                                         <input type="submit" value="Xác nhận" class="btn add-btn">
@@ -88,7 +88,7 @@
                 </div>
             </div> <!--End Content-->
 
-        <jsp:include page="layouts/_footer.jsp"></jsp:include><!--Footer bot-->
+        <jsp:include page="/WEB-INF/views/layouts/_footer.jsp"></jsp:include><!--Footer bot-->
 
         <script type="text/javascript">
             $(function () {

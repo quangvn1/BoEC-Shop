@@ -8,6 +8,7 @@ package com.quangvn.dao;
 import static com.quangvn.dao.BaseDao.getConnect;
 import com.quangvn.factory.ProductCartFactory;
 import com.quangvn.factory.ProductFactory;
+import com.quangvn.model.Account;
 import com.quangvn.models.Bill;
 import com.quangvn.models.Cart;
 import com.quangvn.models.Product;
@@ -37,12 +38,13 @@ public class CartDao extends BaseDao{
         private static final CartDao INSTANCE = new CartDao();
     }
 
-    public static List<ProductCart> getCurrentCart(Bill bill) {
+    public static List<ProductCart> getCurrentCart(Bill bill, Account account) {
         List<ProductCart> list = new ArrayList<ProductCart>();
         Connection conn = getConnect();
         try {
-            CallableStatement stmt = conn.prepareCall("CALL boecshop.getCurrentCart(?)");
+            CallableStatement stmt = conn.prepareCall("CALL boecshop.getCurrentCart(?,?)");
             stmt.setInt(1, bill.getId());
+            stmt.setString(2, account.getUsername());
             ResultSet rs = stmt.executeQuery();
             ProductCart entity = null;
             while (rs.next()) {
