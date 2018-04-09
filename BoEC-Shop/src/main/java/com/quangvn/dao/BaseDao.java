@@ -17,6 +17,7 @@ public class BaseDao {
 
 //    protected String SCHEMA_NAME = "boecshop";
     
+    protected String SCHEMA_NAME = "smartshop";
     protected String SCHEMA_NAME = "boecshop";
 
     protected static Connection getConnect() {
