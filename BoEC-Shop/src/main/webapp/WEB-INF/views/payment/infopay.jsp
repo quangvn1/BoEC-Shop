@@ -66,8 +66,8 @@
                                     </div>
                                     <div class="col-md-7">
                                         <select class="input-text add-product" name="time">
-                                            <option value="1">Trong giờ hành chính</option>
-                                            <option value="0">Ngoài giờ hành chính</option>
+                                            <option value="Trong giờ hành chính">Trong giờ hành chính</option>
+                                            <option value="Ngoài giờ hành chính">Ngoài giờ hành chính</option>
                                         </select>
                                     </div>
                                     <div class="col-md-5">
@@ -77,6 +77,40 @@
                                     </div>
                                     <div class="col-md-7">
                                         <input type="text" name="address" class="input-text add-product" value="${user.address}">
+                                    </div>                     
+                                    <div class="col-md-5">
+                                        <div class="add-title">
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select class="input-text add-product" name="payment_method">
+                                            <option value="0">Visa</option>
+                                            <option value="1">Master card</option>
+                                            <option value="2">ATM</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div></div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="credit_number" class="input-text add-product" placeholder="Số thẻ">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div></div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <input type="text" name="credit_password" class="input-text add-product" placeholder="Mật khẩu thẻ">
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div></div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <select class="input-text add-product" name="transfer_method">
+                                            <option value="0">Giao hàng Viettel - 20000đ (Giao hàng trong 1-2 ngày)</option>
+                                            <option value="1">Giao hàng tiết kiệm - 10000đ (Giao hàng trong 3 ngày)</option>
+                                            <option value="2">Giao hàng Express - 15000đ (Giao hàng trong 2 ngày</option>
+                                        </select>
                                     </div>
                                     <div class="col-md-7 col-offset-5">
                                         <input type="submit" value="Xác nhận" class="btn add-btn">

@@ -1,4 +1,5 @@
 com\quangvn\dao\ProductDao.class
+com\tungns\chain\UsernameChecking.class
 com\quangvn\filter\MediumElectronicFilter.class
 com\quangvn\filter\FilterProduct.class
 com\quangvn\builder\ProductBuilder.class
@@ -14,6 +15,7 @@ com\quangvn\dao\CartDao$1.class
 com\quangvn\controller\ProductController.class
 com\quangvn\dao\BillDao.class
 com\quangvn\model\NullAccount.class
+com\tungns\chain\EmailChecking.class
 com\quangvn\dao\AccountDao.class
 com\quangvn\dao\BaseDao.class
 com\quangvn\models\Product.class
@@ -31,6 +33,7 @@ com\quangvn\filter\LowClothesFilter.class
 com\quangvn\builder\ProductBuilder$ProductKeyStatusBuilder.class
 com\quangvn\factory\BillFactory.class
 com\quangvn\controller\LogoutController.class
+com\tungns\chain\TelChecking.class
 com\quangvn\service\ProductService$1.class
 com\quangvn\model\AbstractRole.class
 com\quangvn\controller\LoginController.class
@@ -38,6 +41,7 @@ com\quangvn\model\Account.class
 com\quangvn\models\Cart.class
 com\quangvn\service\ProductService.class
 com\quangvn\dao\CartDao$CartDaoHolder.class
+com\quangvn\controller\PaymentController.class
 com\quangvn\dao\ProductDao$1.class
 com\quangvn\filter\ElectronicProductFilter.class
 com\quangvn\models\NullProduct.class
@@ -49,6 +53,7 @@ com\quangvn\dao\ProductDao$ProductDaoHolder.class
 com\quangvn\controller\IndexController.class
 com\quangvn\controller\RegistrationController.class
 com\quangvn\filter\MediumBookFilter.class
+com\tungns\chain\AbstractChecking.class
 com\quangvn\filter\LowBookFilter.class
 com\quangvn\filter\MediumPriceProductFilter.class
 com\quangvn\filter\BookProductFilter.class

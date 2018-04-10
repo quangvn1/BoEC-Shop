@@ -13,6 +13,7 @@ import com.quangvn.models.Bill;
 import com.quangvn.models.Product;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -90,5 +91,27 @@ public class BillDao extends BaseDao{
             closeConnection(conn);
         }
         return id;
+    }
+    
+    public static void updateBill(Bill bill, Account account) {
+        Connection conn = getConnect();
+        try {
+            CallableStatement stmt = conn.prepareCall("CALL " + SCHEMA_NAME + ".updateBill(?,?,?,?,?,?,?,?)");
+            //convert java.util.Date to java.sql.Date
+            
+            stmt.setString(1, account.getUsername());
+            stmt.setTimestamp(2, getTime(bill.getPayDate()));
+            stmt.setString(3, bill.getTimeShip());
+            stmt.setString(4, bill.getAddressShip());
+            stmt.setInt(5, bill.getPaymentMethod());
+            stmt.setInt(6, bill.getTransferMethod());
+            stmt.setString(7, bill.getCreditNumber());
+            stmt.setString(8, bill.getCreditPassword());
+            stmt.executeUpdate();
+        } catch (Exception e) {
+            System.out.println("Error to update bill: " + e.getMessage());
+        } finally {
+            closeConnection(conn);
+        }
     }
 }

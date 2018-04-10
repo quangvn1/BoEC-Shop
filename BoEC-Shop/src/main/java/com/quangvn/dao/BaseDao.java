@@ -17,7 +17,7 @@ public class BaseDao {
 
 //    protected String SCHEMA_NAME = "boecshop";
     
-    protected String SCHEMA_NAME = "boecshop";
+    protected static String SCHEMA_NAME = "boecshop";
 
     protected static Connection getConnect() {
         String classname = "com.mysql.jdbc.Driver";
