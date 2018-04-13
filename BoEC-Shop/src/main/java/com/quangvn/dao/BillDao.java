@@ -10,6 +10,7 @@ import com.quangvn.factory.BillFactory;
 import com.quangvn.factory.ProductFactory;
 import com.quangvn.model.Account;
 import com.quangvn.models.Bill;
+import com.quangvn.models.Card;
 import com.quangvn.models.Product;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -93,20 +94,18 @@ public class BillDao extends BaseDao{
         return id;
     }
     
-    public static void updateBill(Bill bill, Account account) {
+    public static void updateBill(Bill bill, Card card) {
         Connection conn = getConnect();
         try {
-            CallableStatement stmt = conn.prepareCall("CALL " + SCHEMA_NAME + ".updateBill(?,?,?,?,?,?,?,?)");
+            CallableStatement stmt = conn.prepareCall("CALL " + SCHEMA_NAME + ".updateBill(?,?,?,?,?,?)");
             //convert java.util.Date to java.sql.Date
             
-            stmt.setString(1, account.getUsername());
+            stmt.setString(1, bill.getUser().getUsername());
             stmt.setTimestamp(2, getTime(bill.getPayDate()));
             stmt.setString(3, bill.getTimeShip());
             stmt.setString(4, bill.getAddressShip());
-            stmt.setInt(5, bill.getPaymentMethod());
-            stmt.setInt(6, bill.getTransferMethod());
-            stmt.setString(7, bill.getCreditNumber());
-            stmt.setString(8, bill.getCreditPassword());
+            stmt.setInt(5, bill.getTransferMethod());
+            stmt.setInt(6, card.getId());
             stmt.executeUpdate();
         } catch (Exception e) {
             System.out.println("Error to update bill: " + e.getMessage());

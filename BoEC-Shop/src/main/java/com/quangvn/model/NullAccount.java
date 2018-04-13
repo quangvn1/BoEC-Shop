@@ -52,11 +52,6 @@ public class NullAccount extends Account{
     }
 
     @Override
-    public String getPaymentCardId() {
-        return "Invalid account";
-    }
-
-    @Override
     public String getDesc() {
         return "Invalid account";
     }

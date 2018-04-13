@@ -23,18 +23,7 @@ public class Bill {
     private List<Cart> list;
     private String timeShip;
     private String addressShip;
-    private int paymentMethod;
     private int transferMethod;
-    private String creditNumber;
-    private String creditPassword;
-
-    public int getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(int paymentMethod) {
-        this.paymentMethod = paymentMethod;
-    }
 
     public int getTransferMethod() {
         return transferMethod;
@@ -42,22 +31,6 @@ public class Bill {
 
     public void setTransferMethod(int transferMethod) {
         this.transferMethod = transferMethod;
-    }
-
-    public String getCreditNumber() {
-        return creditNumber;
-    }
-
-    public void setCreditNumber(String creditNumber) {
-        this.creditNumber = creditNumber;
-    }
-
-    public String getCreditPassword() {
-        return creditPassword;
-    }
-
-    public void setCreditPassword(String creditPassword) {
-        this.creditPassword = creditPassword;
     }
 
     public Bill() {

@@ -12,7 +12,9 @@ import com.quangvn.factory.BillFactory;
 import com.quangvn.model.Account;
 import com.quangvn.model.CustomerAccount;
 import com.quangvn.models.Bill;
+import com.quangvn.models.Card;
 import com.tungns.chain.AbstractChecking;
+import com.tungns.paymentService.PaymentDeligate;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.time.Instant;
@@ -52,16 +54,21 @@ public class PaymentController {
         int transferMethod = Integer.parseInt(request.getParameter("transfer_method"));
         String creditNumber = request.getParameter("credit_number");
         String creditPassword = request.getParameter("credit_password");
+        Card card = new Card();
+        card.setNumber(creditNumber);
+        card.setPassword(creditPassword);
+        card.setType(paymentMethod);
+        card.setOwner(user);
         Bill bill = new Bill();
         bill.setPayDate(payDate);
         bill.setUser(user);
         bill.setTimeShip(timeShip);
         bill.setAddressShip(address);
-        bill.setPaymentMethod(paymentMethod);
         bill.setTransferMethod(transferMethod);
-        bill.setCreditNumber(creditNumber);
-        bill.setCreditPassword(creditPassword);
-        BillDao.updateBill(bill, user);
+        bill.setUser(user);       
+        PaymentDeligate paymentDeligate = new PaymentDeligate();
+        paymentDeligate.setServiceType(paymentMethod);       
+        paymentDeligate.pay(card, bill);       
         session.removeAttribute("cart");
 //        String tel = request.getParameter("tel");
 //        String gender = request.getParameter("time");
@@ -80,6 +87,7 @@ public class PaymentController {
 //            String warn = "Quý khách chưa nhập đủ thông tin đăng kí";
 //            request.setAttribute("warn", warn);
 //        }
+        
         return "payment/result";
     }
 }

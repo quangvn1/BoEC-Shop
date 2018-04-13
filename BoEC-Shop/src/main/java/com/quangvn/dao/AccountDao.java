@@ -21,7 +21,7 @@ public class AccountDao extends BaseDao{
     public static Account checkAccount(String username, String password) {
         Connection con = getConnect();
         Account entity = new NullAccount();
-        String sql = "SELECT a.username, a.password, a.fullname, a.gender, a.phone, a.address, a.email, a.paymentCardId, a.desc, a.roleId "
+        String sql = "SELECT a.username, a.password, a.fullname, a.gender, a.phone, a.address, a.email, a.desc, a.roleId "
                 + "FROM account a, role b "
                 + "WHERE a.username = ? AND a.password = ? "
                 + "AND a.roleId = b.id";

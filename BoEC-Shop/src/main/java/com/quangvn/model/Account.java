@@ -23,7 +23,6 @@ public abstract class Account{
     protected String email;
     protected String phone;
     protected String address;
-    protected String paymentCardId;
     protected String desc;
     protected AbstractRole role;
 
@@ -54,7 +53,6 @@ public abstract class Account{
     public abstract String getEmail();
     public abstract String getPhone();
     public abstract String getAddress();
-    public abstract String getPaymentCardId();
     public abstract String getDesc();
 
     public void setId(int id) {
@@ -87,10 +85,6 @@ public abstract class Account{
 
     public void setAddress(String address) {
         this.address = address;
-    }
-
-    public void setPaymentCardId(String paymentCardId) {
-        this.paymentCardId = paymentCardId;
     }
     
     public void setDesc(String desc) {

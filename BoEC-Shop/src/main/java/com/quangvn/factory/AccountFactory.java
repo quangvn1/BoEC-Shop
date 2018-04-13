@@ -27,7 +27,6 @@ public class AccountFactory {
             String phone = rs.getString("PHONE");
             String address = rs.getString("ADDRESS");
             String email = rs.getString("EMAIL");
-            String paymentCardId = rs.getString("PAYMENTCARDID");
             String desc = rs.getString("DESC");
             int roleId = rs.getInt("ROLEID");
 
@@ -41,7 +40,6 @@ public class AccountFactory {
                     acc.setPhone(phone);
                     acc.setAddress(address);
                     acc.setEmail(email);
-                    acc.setPaymentCardId(paymentCardId);
                     acc.setDesc(desc);
                     return acc;
                 } else {
@@ -54,7 +52,6 @@ public class AccountFactory {
                         acc.setPhone(phone);
                         acc.setAddress(address);
                         acc.setEmail(email);
-                        acc.setPaymentCardId(paymentCardId);
                         acc.setDesc(desc);
                         return acc;
                     }

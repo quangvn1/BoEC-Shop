@@ -109,7 +109,7 @@
                                         <select class="input-text add-product" name="transfer_method">
                                             <option value="0">Giao hàng Viettel - 20000đ (Giao hàng trong 1-2 ngày)</option>
                                             <option value="1">Giao hàng tiết kiệm - 10000đ (Giao hàng trong 3 ngày)</option>
-                                            <option value="2">Giao hàng Express - 15000đ (Giao hàng trong 2 ngày</option>
+                                            <option value="2">Giao hàng Express - 15000đ (Giao hàng trong 2 ngày)</option>
                                         </select>
                                     </div>
                                     <div class="col-md-7 col-offset-5">

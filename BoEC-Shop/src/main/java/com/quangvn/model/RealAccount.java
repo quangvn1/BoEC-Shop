@@ -52,11 +52,6 @@ public class RealAccount extends Account{
     }
 
     @Override
-    public String getPaymentCardId() {
-        return paymentCardId;
-    }
-
-    @Override
     public String getDesc() {
         return desc;
     }
